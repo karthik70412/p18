@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState } from "react"; // ⬅️ FIX 1: Added { useState }
 import "./App.css";
 
 function App() {
@@ -9,18 +9,23 @@ function App() {
     e.preventDefault();
     console.log("Signing in with:", { username, password });
     alert("Sign-in attempt submitted!");
+    
+    // Optional: Clear fields after submission
+    // setUsername("");
+    // setPassword("");
   };
 
   return (
     <div className="app">
       <div className="signin-container">
-        <h2>Find & Hire a Professional</h2>
+        <h2>Sign In to Hire the Right Professional</h2>
         <form onSubmit={handleSignIn}>
           <div className="input-group">
             <label htmlFor="username">Username</label>
             <input
               type="text"
               id="username"
+              name="username" // ⬅️ FIX 2: Added name attribute for accessibility/forms
               value={username}
               onChange={(e) => setUsername(e.target.value)}
               required
@@ -31,6 +36,7 @@ function App() {
             <input
               type="password"
               id="password"
+              name="password" // ⬅️ FIX 3: Added name attribute for accessibility/forms
               value={password}
               onChange={(e) => setPassword(e.target.value)}
               required
